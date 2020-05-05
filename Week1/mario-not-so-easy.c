@@ -3,7 +3,10 @@
 
 int main(void){
 
-    int n = get_int("Enter the number of rows you want\n");
+    int n = -1;
+    while(n > 0){
+        get_int("Enter the number of rows you want\n");
+    }
     
     for(int i = 1; i <= n; i++){
     
