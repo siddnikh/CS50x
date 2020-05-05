@@ -4,7 +4,7 @@
 int main(void){
 
     int n = -1;
-    while(n > 0){
+    while(n < 0 && n > 8){
         get_int("Enter the number of rows you want\n");
     }
     
