@@ -1,11 +1,21 @@
 #include<stdio.h>
 #include <stdbool.h>
+#include<cs50.h>
+
+static int count(long n){
+    int c = 0;
+    while(n != 0){
+        n /= 10;
+        c++;
+    }
+    return c;
+}
 
 int main(void){
     int first_sum = 0; //sum of digits, second to last ones
     int second_sum = 0; //sum of the remaining digits
-    long n = 4062901840;
-    
+    long n = get_long("Enter the credit card number\n");
+
     long n2 = n;
     long n3 = n;
 
@@ -25,17 +35,15 @@ int main(void){
         {
             first_sum += s;
         }
-    } 
+    }
 //finding the sum of the remaining number
-    while(n != 0){ 
-
+    while(n != 0){
         second_sum += n%10;
         n /= 100;
-        
     }
 
     bool valid = false;
-    if((second_sum + first_sum) % 10 == 0){
+    if((second_sum + first_sum) % 10 == 0 && count(n3) > 10){
         valid = true;
     }
 
@@ -46,21 +54,21 @@ int main(void){
 
     if(valid) {
         if(n3 == 34 || n3 == 37){
-            printf("AMEX");
+            printf("AMEX\n");
         }
         else if(n3 == 51 || n3 == 52 || n3 == 53 || n3 == 54 || n3 == 55){
-            printf("MASTERCARD");
+            printf("MASTERCARD\n");
         }
         else if(n3 / 10 == 4){
-            printf("VISA");
+            printf("VISA\n");
         }
         else{
-            printf("INVALID");
+            printf("INVALID\n");
         }
     }
     else
     {
-        printf("INVALID");
+        printf("INVALID\n");
     }
 
 }
